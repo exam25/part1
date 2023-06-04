@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>List Object Properties</title>
+  </head>
+  <body>
+    <label for="name">Name:</label>
+    <input type="text" id="name"><br>
+
+    <label for="dept">Department:</label>
+    <input type="text" id="dept"><br>
+
+    <label for="id">ID:</label>
+    <input type="text" id="id"><br>
+
+    <button onclick="listProperties()">Submit</button>
+
+    <div id="output"></div>
+
+    <script>
+        function listProperties() {
+            var name = document.getElementById("name").value;
+            var dept = document.getElementById("dept").value;
+            var id = document.getElementById("id").value;
+            
+            var student = {
+                name: name,
+                dept: dept,
+                id: id
+            }
+
+            let op = '';
+            for(var key in student){
+                op += student[key] + ',';
+            }
+
+            document.getElementById("output").innerHTML = op;
+        }
+    </script>
+  </body>
+</html>
