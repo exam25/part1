@@ -5,10 +5,13 @@
     <body>
         <label for="input">Enter String</label>
         <input type="text" id="input">
-        <button onclick="func()">Submit</button>
+        <button id="button">Submit</button>
 
         <div id="set"></div>
         <script>
+            let button = document.getElementById("button");
+            button.addEventListener("click", func);
+
             function func(){
                 let input = document.getElementById("input");
                 let str = input.value.toLowerCase().split('').map(value => value.trim(' '));
