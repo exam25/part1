@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>p9</title>
+    </head>
+    <body>
+
+    <label for="sen">Enter Sentence</label>
+    <input id="sen" type="text">
+    <button onclick="func()">Click Me</button>
+    
+    <br><br>
+
+    Sentence : <span id="cap"></span><br>
+    Array : <span id="arr"></span><br>
+        <script>
+            function func(){
+                let sen = document.getElementById('sen').value.split(' ');
+                document.getElementById("arr").innerHTML = sen.join(',');
+                op = '';
+                sen = sen.map(word => op+=word[0].toUpperCase()+word.slice(1)+' ');
+                alert(op);
+            }
+        </script>
+    </body>
+</html>
