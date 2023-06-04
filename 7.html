@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jump Search</title>
+    </head>
+    <body>
+        <label for="input">Enter array</label>
+        <input id="input">
+        <button onclick="setArray()">Register Array</button>
+        
+        <br><br>
+
+        <span id="sign"></span>
+
+        <br><br>
+
+        <label for="ele">Enter Element</label>
+        <input id="ele" type="number">
+        <button onclick="find()">Find Element</button>
+
+        <br><br>
+
+        Position is <span id="output"></span>
+
+        <script>
+
+            let arr;
+
+            function setArray(){
+                arr = document.getElementById("input").value.split(',').map(val => parseInt(val.trim()));
+                document.getElementById("sign").innerHTML = "Registered  : " + arr;
+            }
+
+            function find(){
+                let ele = document.getElementById("ele").value;
+                const num = arr.length;
+                const step = Math.floor(Math.sqrt(num));
+                let op = document.getElementById("output");
+                
+                console.log(num);
+                console.log(step);
+                
+                for(let i=0; i<num; i+=step){
+                    if(ele == arr[i]){
+                        op.innerHTML = i;
+                        return;
+                    }
+
+                    else if(ele < arr[i]){
+                        for(let j=i-step+1; j<i; j++){
+                            if(ele == arr[j]){
+                                op.innerHTML = j;
+                                return;
+                            }
+                        }
+                    }
+
+                    else if(i>num-step && ele<arr[num]){
+                        for(let j=i; j<num; j++){
+                            if(ele == arr[j]){
+                                op.innerHTML = j;
+                                return;
+                            }
+                        }
+                    }
+                }
+
+                op.innerHTML = "Not Found";
+            }
+        </script>
+    </body>
+</html>
