@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>p5 bro</title>
+    </head>
+    <body>
+        <label for="input">Enter String</label>
+        <input type="number" id="input">
+        <button id="button" onclick="func()">Submit</button>
+
+        <div id="set"></div>
+        <script>
+            const func = () => {
+                let text = document.getElementById("input").value.split('').map(val => val.trim());
+                let op = ''
+                text.forEach(element => {
+                    op = element + op;
+                });
+                let output = document.getElementById('set');
+                output.innerHTML = op;                
+            }
+        </script>
+    </body>
+</html>
