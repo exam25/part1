@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Set</title>
+    </head>
+    <body>
+        <label for="input">Enter Set</label>
+        <input id="input" type="text">
+        <button onclick="func()">Submit</button>
+        
+        <br><br><br>
+
+        <label for="index">Enter Index</label>
+        <input id="index" type="text">
+        <button onclick="func2()">Submit</button>
+        
+        <br><br><br>
+        
+        <div id="output"></div>
+        <script>
+
+            let x;
+
+            function func(){
+                let input = document.getElementById("input");
+                let arr = input.value.split(',');
+
+                x = new Set(arr);
+                
+                //let index = prompt("Give it to me");
+            }
+
+            function func2(){
+                let index = document.getElementById("index").value;
+                let output = document.getElementById("output");
+                output.innerHTML = [...x][index];
+            }
+        </script>
+    </body>
+</html>
