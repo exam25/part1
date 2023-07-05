@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vowel Count</title>
+		<title>Program 1</title>
 	</head>
-
 	<body>
-		<h1>Count the number of Vowels</h1>
-		<label for = 'input'>Enter the text : </label>
-		<input type = 'text' id = 'input'> 
-		<button onclick = 'count()'>Submit</button>
-
-		<br>
-
-		The number of vowels : <span id = 'print'></span>
+		<button onclick="funca()">Sum</button>
+		<br><br>
+		<label for='partb'>Enter Number </label>
+		<input id='partb'>
+		<br><br>
+		<button onclick="funcb()">Reverse</button>
+		<div id='rev'>
+		
 		<script>
-			function count(){
-				const input = document.getElementById('input');
-				const text = input.value.toLowerCase();
+			function funca(){
+				var a = parseInt(prompt("Number a"));
+				var b = parseInt(prompt("Number b"));
+				alert("The sum is " + (a+b));
+				
+			}
 
-				const print = document.getElementById('print');
-				const vowels = ['a', 'e', 'i', 'o', 'u'];
-
-				let c = 0;
-				for(let i=0; i<text.length; i++)
-					if(vowels.includes((text[i])))
-						c += 1;
-
-				print.innerHTML = c;
-			} 
+			function funcb(){
+				var a = document.getElementById("partb").value.split('');
+				var reverse = '';
+				a.forEach((x) => {reverse = x + reverse});
+				document.getElementById('rev').innerHTML = "Reverse is : "+reverse;
+			}
 		</script>
 	</body>
+
 </html>
