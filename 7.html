@@ -1,72 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Jump Search</title>
+        <title>Program 7</title>
     </head>
     <body>
-        <label for="input">Enter array</label>
-        <input id="input">
-        <button onclick="setArray()">Register Array</button>
-        
-        <br><br>
-
-        <span id="sign"></span>
-
-        <br><br>
-
-        <label for="ele">Enter Element</label>
-        <input id="ele" type="number">
-        <button onclick="find()">Find Element</button>
-
-        <br><br>
-
-        Position is <span id="output"></span>
-
+        <input id="inp" oninput="binsearch()">
         <script>
-
-            let arr;
-
-            function setArray(){
-                arr = document.getElementById("input").value.split(',').map(val => parseInt(val.trim()));
-                document.getElementById("sign").innerHTML = "Registered  : " + arr;
-            }
-
-            function find(){
-                let ele = document.getElementById("ele").value;
-                const num = arr.length;
-                const step = Math.floor(Math.sqrt(num));
-                let op = document.getElementById("output");
-                
-                console.log(num);
-                console.log(step);
-                
-                for(let i=0; i<num; i+=step){
-                    if(ele == arr[i]){
-                        op.innerHTML = i;
+            var arr = prompt("Enter Array").split(',').map(x => parseInt(x.trim()));
+            console.log(arr);
+            function binsearch(){
+                var ele = parseInt(document.getElementById("inp").value);
+                document.getElementById("inp").value = '';
+                var l=0;
+                var u=arr.length-1;
+                while(l <= u){
+                    var m = Math.floor((l+u)/2);
+                    if(arr[m] == ele){
+                        alert(m+1);
                         return;
                     }
 
-                    else if(ele < arr[i]){
-                        for(let j=i-step+1; j<i; j++){
-                            if(ele == arr[j]){
-                                op.innerHTML = j;
-                                return;
-                            }
-                        }
-                    }
-
-                    else if(i>num-step && ele<arr[num]){
-                        for(let j=i; j<num; j++){
-                            if(ele == arr[j]){
-                                op.innerHTML = j;
-                                return;
-                            }
-                        }
-                    }
+                    if(ele < arr[m])
+                        u = m - 1;
+                    else
+                        l = m + 1;
                 }
+                alert("Absent");
+            }           
 
-                op.innerHTML = "Not Found";
-            }
         </script>
     </body>
 </html>
