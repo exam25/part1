@@ -1,62 +1,27 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html>
     <head>
-        <title>Map</title>
+        <title>Program 4</title>
     </head>
     <body>
-        <label for="key">Enter Key</label>
-        <input id="key" type="text">
-        <label for="value">Enter Value</label>
-        <input id="value" type="text">
-        <button onclick="storeValue()">Store</button>
-        
-        <br><br><br>
-
-        <button onclick="retrieveValue()">Retrieve</button>
-        
-        <br><br>
-        
-        <button onclick="iterateMap()">Iterate</button>
-        
-        <div id="output"></div>
-        
+        <label for="inp">Enter String</label>
+        <input id="inp">
+        <button id="but">Click Me</button>
+        <div id="op"></div>
         <script>
-            let myMap = new Map();
-
-            function storeValue(){
-                let keyInput = document.getElementById("key");
-                let valueInput = document.getElementById("value");
-                let key = keyInput.value;
-                let value = valueInput.value;
-
-                myMap.set(key, value);
-
-                keyInput.value = "";
-                valueInput.value = "";
+            window.onload = () => {
+                var buton = document.getElementById("but");
+                buton.addEventListener("click", handleClick);
             }
 
-            function retrieveValue(){
-                let keyInput = document.getElementById("key");
-                let key = keyInput.value;
+            function handleClick(){
+                var inp = document.getElementById("inp").value;
+                op = "The sorted string is : ";
+                inp.split('').sort().forEach((x) => {
+                    op += x
+                })
+                document.getElementById("op").innerHTML = op;
 
-                let output = document.getElementById("output");
-                if (myMap.has(key)) {
-                    let value = myMap.get(key);
-                    output.innerHTML = "Value for key " + key + ": " + value;
-                } else {
-                    output.innerHTML = "No value found for key " + key;
-                }
-
-                keyInput.value = "";
-            }
-
-            function iterateMap(){
-                let output = document.getElementById("output");
-                output.innerHTML = "";
-
-                for (let [key, value] of myMap) {
-                    output.innerHTML += "Key: " + key + ", Value: " + value + "<br>";
-                }
             }
         </script>
     </body>
