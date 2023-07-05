@@ -7,22 +7,35 @@
         <button onclick="func()">Submit</button>
         <script>
             function func(){
+
+                var s = performance.now();
                 async1()
-                    .then(async2)
-                    .then(async3)
-                    .then(evenodd)
                     .then(() => {
-                        console.log("All tasks done.")
+                        console.log("async1 completed." + (performance.now()-s));
+                        return async2();
+                    })
+                    .then(() => {
+                        console.log("async2 completed." + (performance.now()-s));
+                        return async3();
+                    })
+                    .then(() => {
+                        console.log("async3 completed." + (performance.now()-s));
+                        console.log("All tasks done.");
                     })
                     .catch((error) => {
-                        console.log("An error occured: ", error);
+                        console.log("An error occurred:", error);
                     });
+
+                setTimeout(() => {
+                    evenodd();
+                    console.log("Time for evenodd " + (performance.now()-s));
+                }, 2200);
             }
 
             function async1(){
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
-                        console.log("Async1 done");
+                        console.log("Async1 done.");
                         resolve();
                     }, 2000);
                 });
@@ -47,13 +60,11 @@
             }
 
             function evenodd(){
-                return new Promise((resolve, reject) => {
-                    if(parseInt(prompt("Enter number")) % 2 == 0)
-                        console.log("Even number entered");
-                    else
-                        console.log("Odd number entered");
-                });                    
+                if(parseInt(prompt("Enter number")) % 2 == 0)
+                    console.log("Even number entered.");
+                else
+                    console.log("Odd number entered.");
             }
         </script>
     </body>
-</html> 
+</html>
