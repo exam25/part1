@@ -1,40 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html>
     <head>
-        <title>Set</title>
+        <title>Program 3</title>
     </head>
     <body>
-        <label for="input">Enter Set</label>
-        <input id="input" type="text">
-        <button onclick="func()">Submit</button>
-        
-        <br><br><br>
-
-        <label for="index">Enter Index</label>
-        <input id="index" type="text">
-        <button onclick="func2()">Submit</button>
-        
-        <br><br><br>
-        
-        <div id="output"></div>
         <script>
+            var vowel = ['a', 'e', 'i', 'o', 'u'];
+            var inp = prompt("Enter String");
+            var cc = 0;
+            var cv = 0;
 
-            let x;
+            inp.toLowerCase().split('').forEach((x) => {
+                if(vowel.includes(x))
+                    cv += 1;
+                else 
+                    cc += 1;
+            });
 
-            function func(){
-                let input = document.getElementById("input");
-                let arr = input.value.split(',');
-
-                x = new Set(arr);
-                
-                //let index = prompt("Give it to me");
-            }
-
-            function func2(){
-                let index = document.getElementById("index").value;
-                let output = document.getElementById("output");
-                output.innerHTML = [...x][index];
-            }
+            alert(`Number of consonants is ${cc} and vowels is ${cv}`);
         </script>
     </body>
 </html>
