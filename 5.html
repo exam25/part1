@@ -1,30 +1,29 @@
+<!DOCTYPE html5>
 <html>
     <head>
-        <title>p5 bro</title>
+        <title>Program 5</title>
     </head>
     <body>
-        <label for="input">Enter String</label>
-        <input type="text" id="input">
-        <button id="button">Submit</button>
-
-        <div id="set"></div>
+        <button id="shift", onclick="ceaser()">Perform Shift</button>
+        
         <script>
-            let button = document.getElementById("button");
-            button.addEventListener("click", func);
+            function ceaser(){
+               var arr = prompt("Enter Text").split('');
+               var shift = parseInt(prompt("Enter Shift"));
+               var a = 'a'.charCodeAt(0);
+               var A = 'A'.charCodeAt(0);    
 
-            function func(){
-                let input = document.getElementById("input");
-                let str = input.value.toLowerCase().split('').map(value => value.trim(' '));
-                str = str.sort();
-                
-                let c = '';
-                for(let i=0; i<str.length; i++){
-                    c += str[i];
-                }
-
-                let x  = document.getElementById("set");
-                x.innerHTML = c;
+               var op = '';
+               arr.forEach((x) => {
+                if(x === x.toUpperCase())
+                    op += String.fromCharCode((x.charCodeAt(0) - A + shift)%26+A);
+                else
+                    op += String.fromCharCode((x.charCodeAt(0) - a + shift)%26+a);
+               })
+               alert(op);
             }
+
+
         </script>
     </body>
 </html>
