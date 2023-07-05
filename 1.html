@@ -1,32 +1,33 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html>
 	<head>
 		<title>Program 1</title>
 	</head>
 	<body>
-		<button onclick="funca()">Sum</button>
+		<label>Sum : </label>
+		<button onclick="funca()">Click</button>
+
 		<br><br>
-		<label for='partb'>Enter Number </label>
-		<input id='partb'>
-		<br><br>
+
+		<label for="inp">Enter Number </label>
+		<input id="inp">
 		<button onclick="funcb()">Reverse</button>
-		<div id='rev'>
-		
+		<div id="res"></div>
+
 		<script>
 			function funca(){
-				var a = parseInt(prompt("Number a"));
-				var b = parseInt(prompt("Number b"));
-				alert("The sum is " + (a+b));
-				
+				var a = parseInt(prompt("Enter A"));
+				var b = parseInt(prompt("Enter B"));
+				alert("The Sum of " + a + " and " + b + " is " + (a + b));
 			}
 
 			function funcb(){
-				var a = document.getElementById("partb").value.split('');
-				var reverse = '';
-				a.forEach((x) => {reverse = x + reverse});
-				document.getElementById('rev').innerHTML = "Reverse is : "+reverse;
+				var a = document.getElementById("inp").value;
+				a = a.split('');
+				var rev = '';
+				a.forEach((x) => {rev = x + rev});
+				document.getElementById("res").innerHTML = "The reverse is " + rev;
 			}
 		</script>
 	</body>
-
 </html>
