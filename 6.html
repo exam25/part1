@@ -1,23 +1,35 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>p5 bro</title>
+        <title>Program 5</title>
     </head>
     <body>
-        <label for="input">Enter String</label>
-        <input type="number" id="input">
-        <button id="button" onclick="func()">Submit</button>
-
-        <div id="set"></div>
+        <input id="inp" onkeydown="keydow()">
+        <button id="shift" onclick="capital()">Capitalize</button>
+        <button id="prank" onmouseover="showans()" onmouseout="clrans()">Mouse Here</button>
         <script>
-            const func = () => {
-                let text = document.getElementById("input").value.split('').map(val => val.trim());
-                let op = ''
-                text.forEach(element => {
-                    op = element + op;
-                });
-                let output = document.getElementById('set');
-                output.innerHTML = op;                
+            var op = ''
+            function capital(){
+               op = '';
+               arr = document.getElementById("inp").value.split(" ");
+               arr.forEach((x) => {
+                    var fir = x.split('')[0];
+                    op += fir.toUpperCase() + x.slice(1) + ' ';
+               });
             }
+
+            function showans(){
+                alert(op);
+            }
+
+            function clrans(){
+                op = ' ';
+            }
+
+            function keydow(){
+                alert("don't do that");
+            }           
+
         </script>
     </body>
 </html>
