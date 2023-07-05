@@ -4,25 +4,64 @@
         <title>Program 4</title>
     </head>
     <body>
-        <label for="inp">Enter String</label>
-        <input id="inp">
-        <button id="but">Click Me</button>
-        <div id="op"></div>
+        <label for="arr">Enter Array seperated by comma</label>
+        <input id="arr">
+        <button id="but", onclick="regarr()">Register Array</button>
+        
+        <br><br>
+
+        <label for="ele">Enter Element</label>
+        <input id="ele">
+        <button id="find", onclick="jumpsearch()">Register Array</button>
+       
+        <br><br>
+
+        <div id="soln"></div>
+
         <script>
-            window.onload = () => {
-                var buton = document.getElementById("but");
-                buton.addEventListener("click", handleClick);
+            var flag = 0;
+            var arr;
+
+            function regarr(){
+                flag = 1;
+                arr = document.getElementById("arr").value.split(',').map(x => parseInt(x.trim())).sort();
+                console.log(arr);
             }
 
-            function handleClick(){
-                var inp = document.getElementById("inp").value;
-                op = "The sorted string is : ";
-                inp.split('').sort().forEach((x) => {
-                    op += x
-                })
-                document.getElementById("op").innerHTML = op;
+            function jumpsearch(){
+                var soln = document.getElementById("soln");
+                if(flag == 0){
+                    soln.innerHTML = "Enter Array First!!!!";
+                    return;
+                }
 
+                var ele = parseInt(document.getElementById("ele").value);
+                var len = arr.length;
+                var inc = Math.floor(Math.sqrt(len));
+                var i = inc;
+                for(i=inc; i<len; i+=inc){
+                    if(ele == arr[i]){
+                        soln.innerHTML = i;
+                        return;
+                    }
+
+                    else if(ele < arr[i]){
+                        for(var j=i-inc; j<i; j++)
+                            if(ele == arr[j]){
+                                soln.innerHTML = j;
+                                return;
+                            }
+                    }
+                }
+                for(i-=inc;i<len;i++)
+                    if(ele == arr[i]){
+                        soln.innerHTML = i;
+                        return;
+                    }
+                    soln.innerHTML = "Not Present";               
             }
+
+
         </script>
     </body>
 </html>
