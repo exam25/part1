@@ -4,7 +4,8 @@
         <title>Program 7</title>
     </head>
     <body>
-        <input id="inp" oninput="binsearch()">
+        Enter element : <input id="inp">
+        <button onclick="binsearch()">Get position</button>
         <script>
             var arr = prompt("Enter Array").split(',').map(x => parseInt(x.trim()));
             console.log(arr);
